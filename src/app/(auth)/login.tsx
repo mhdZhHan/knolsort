@@ -34,7 +34,7 @@ const Login = () => {
 			const userInfo = await signIn()
 			setUser(userInfo)
 			await setStorage<User>("user", userInfo)
-			
+
 			router.push("/(screens)/home")
 		} catch (error) {
 			Alert.alert("Login error", (error as Error).message)
@@ -59,7 +59,7 @@ const Login = () => {
 				onPress={handleLogin}
 				text="Login with Google"
 				style={{ position: "absolute", bottom: 100 }}
-				icon={
+				iconLeft={
 					<AntDesign
 						name="google"
 						size={SIZES.xLarge}

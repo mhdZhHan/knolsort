@@ -9,14 +9,16 @@ import {
 
 type CustomButtonProps = {
 	text: string
-	icon?: React.ReactNode
 	onPress: () => void
+	iconLeft?: React.ReactNode
+	iconRight?: React.ReactNode
 	style?: StyleProp<ViewStyle>
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
 	text,
-	icon,
+	iconLeft,
+	iconRight,
 	onPress,
 	style,
 }) => {
@@ -26,9 +28,11 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 			activeOpacity={0.5}
 			onPress={onPress}
 		>
-			{icon ? icon : ""}
+			{iconLeft ? iconLeft : ""}
 
 			<Text style={styles.buttonText}>{text}</Text>
+
+			{iconRight ? iconRight : ""}
 		</TouchableOpacity>
 	)
 }
