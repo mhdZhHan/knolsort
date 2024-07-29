@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { View, Text, SafeAreaView, StyleSheet, Alert } from "react-native"
 
-// types
+//types
 import type { User } from "@react-native-google-signin/google-signin"
 
 // lib/auth
@@ -16,9 +16,16 @@ import { COLORS, SIZES } from "@/src/constants"
 // components
 import { CustomButton } from "@/src/components"
 
+// contexts
+import { useUserContext } from "@/src/contexts/UserContext"
+import { setStorage } from "@/src/lib/asyncStorageHelpers"
+import { useRouter } from "expo-router"
+
 const Login = () => {
+	const router = useRouter()
+
 	const [isLogin, setIsLogin] = useState(false)
-	const [user, setUser] = useState<User | null>(null)
+	const { setUser } = useUserContext()
 
 	const handleLogin = async () => {
 		setIsLogin(true)
@@ -26,6 +33,9 @@ const Login = () => {
 		try {
 			const userInfo = await signIn()
 			setUser(userInfo)
+			await setStorage<User>("user", userInfo)
+			
+			router.push("/(screens)/home")
 		} catch (error) {
 			Alert.alert("Login error", (error as Error).message)
 		} finally {

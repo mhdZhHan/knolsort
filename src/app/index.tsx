@@ -3,16 +3,26 @@ import { View, Text, StyleSheet, StatusBar, SafeAreaView } from "react-native"
 import { useRouter } from "expo-router"
 import { COLORS, SHADOWS, SIZES } from "../constants"
 
+// contexts
+import { useUserContext } from "../contexts/UserContext"
+
 export default function Splash() {
 	const router = useRouter()
 
+	const { user } = useUserContext()
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			router.replace("/(auth)/login")
+			if (user?.idToken) {
+				console.log("Navigating to home screen")
+				router.replace("/(screens)/home")
+			} else {
+				router.replace("/(auth)/login")
+			}
 		}, 2000)
 
 		return () => clearTimeout(timer)
-	}, [])
+	}, [user, router])
 
 	return (
 		<>
