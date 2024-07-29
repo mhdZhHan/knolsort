@@ -14,7 +14,6 @@ export default function Splash() {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			if (user?.idToken) {
-				console.log("Navigating to home screen")
 				router.replace("/(screens)/home")
 			} else {
 				router.replace("/(auth)/login")
