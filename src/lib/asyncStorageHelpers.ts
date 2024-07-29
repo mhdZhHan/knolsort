@@ -12,7 +12,9 @@ export const getStorage = async <T>(key: string): Promise<T | null> => {
 		if (data) {
 			return JSON.parse(data) as T
 		} else {
-			throw new Error(`${key} is not in storage`)
+			// throw new Error(`${key} is not in storage`)
+			console.log(`${key} is not in storage`)
+			return null
 		}
 	} catch (error) {
 		console.error(`Error getting ${key}: `, error)
