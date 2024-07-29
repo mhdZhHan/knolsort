@@ -8,7 +8,7 @@ const COLORS = {
 
 	white: "#fff",
 	lightWhite: "#FAFAFC",
-	
+
 	black: "#000",
 }
 
@@ -24,11 +24,11 @@ const SIZES = {
 const SHADOWS = {
 	small: {
 		shadowColor: "#333",
-        // ios  
-        shadowOffset: { width: 2, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        // android
+		// ios
+		shadowOffset: { width: 2, height: 2 },
+		shadowOpacity: 0.3,
+		shadowRadius: 4,
+		// android
 		elevation: 2,
 	},
 	medium: {
@@ -40,6 +40,30 @@ const SHADOWS = {
 		shadowOpacity: 0.25,
 		shadowRadius: 5.84,
 		elevation: 5,
+	},
+
+	light: {
+		shadowColor: COLORS.gray,
+		shadowOffset: {
+			width: 0,
+			height: 1,
+		},
+		shadowOpacity: 0.22,
+		shadowRadius: 2.22,
+
+		elevation: 3,
+	},
+
+	dark: {
+		shadowColor: COLORS.gray,
+		shadowOffset: {
+			width: 0,
+			height: 7,
+		},
+		shadowOpacity: 0.41,
+		shadowRadius: 9.11,
+
+		elevation: 14,
 	},
 }
 

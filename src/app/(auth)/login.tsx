@@ -1,15 +1,6 @@
 import { useState } from "react"
 
-import {
-	View,
-	Text,
-	SafeAreaView,
-	StyleSheet,
-	Platform,
-	StatusBar,
-	TouchableOpacity,
-	Alert,
-} from "react-native"
+import { View, Text, SafeAreaView, StyleSheet, Alert } from "react-native"
 
 // types
 import type { User } from "@react-native-google-signin/google-signin"
@@ -20,10 +11,12 @@ import { signIn } from "@/src/lib/auth"
 import AntDesign from "@expo/vector-icons/AntDesign"
 
 // constants
-import { COLORS, SHADOWS, SIZES } from "@/src/constants"
+import { COLORS, SIZES } from "@/src/constants"
+
+// components
+import { CustomButton } from "@/src/components"
 
 const Login = () => {
-	const [error, setError] = useState("")
 	const [isLogin, setIsLogin] = useState(false)
 	const [user, setUser] = useState<User | null>(null)
 
@@ -42,7 +35,7 @@ const Login = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text style={styles.title}>Welcome to EduApp</Text>
+			<Text style={styles.title}>Welcome to Knolsort</Text>
 			<Text style={styles.subtitle}>Your gateway to knowledge</Text>
 
 			<View style={styles.infoContainer}>
@@ -52,18 +45,18 @@ const Login = () => {
 				</Text>
 			</View>
 
-			<TouchableOpacity
-				style={styles.googleButton}
-				activeOpacity={0.5}
+			<CustomButton
 				onPress={handleLogin}
-			>
-				<AntDesign
-					name="google"
-					size={SIZES.xLarge}
-					color={COLORS.black}
-				/>
-				<Text style={styles.googleButtonText}>Login with Google</Text>
-			</TouchableOpacity>
+				text="Login with Google"
+				style={{ position: "absolute", bottom: 100 }}
+				icon={
+					<AntDesign
+						name="google"
+						size={SIZES.xLarge}
+						color={COLORS.black}
+					/>
+				}
+			/>
 		</SafeAreaView>
 	)
 }
@@ -74,7 +67,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: COLORS.tertiary,
-		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
 
 		justifyContent: "center",
 		alignItems: "center",
@@ -105,26 +97,5 @@ const styles = StyleSheet.create({
 		color: "#555",
 		textAlign: "center",
 		fontStyle: "italic",
-	},
-	googleButton: {
-		backgroundColor: COLORS.white,
-		borderColor: COLORS.black,
-		paddingVertical: SIZES.small,
-		paddingHorizontal: SIZES.large,
-		borderWidth: 2,
-		borderRadius: 5,
-
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "center",
-		gap: SIZES.medium,
-
-		...SHADOWS.medium,
-	},
-	googleButtonText: {
-		color: COLORS.black,
-		fontSize: SIZES.large, // 18
-		fontWeight: "bold",
-		textAlign: "center",
 	},
 })
