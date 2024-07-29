@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import {
 	View,
 	Text,
@@ -6,13 +8,38 @@ import {
 	Platform,
 	StatusBar,
 	TouchableOpacity,
+	Alert,
 } from "react-native"
 
-import AntDesign from '@expo/vector-icons/AntDesign'
+// types
+import type { User } from "@react-native-google-signin/google-signin"
+
+// lib/auth
+import { signIn } from "@/src/lib/auth"
+
+import AntDesign from "@expo/vector-icons/AntDesign"
 
 // constants
 import { COLORS, SHADOWS, SIZES } from "@/src/constants"
+
 const Login = () => {
+	const [error, setError] = useState("")
+	const [isLogin, setIsLogin] = useState(false)
+	const [user, setUser] = useState<User | null>(null)
+
+	const handleLogin = async () => {
+		setIsLogin(true)
+
+		try {
+			const userInfo = await signIn()
+			setUser(userInfo)
+		} catch (error) {
+			Alert.alert("Login error", (error as Error).message)
+		} finally {
+			setIsLogin(false)
+		}
+	}
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text style={styles.title}>Welcome to EduApp</Text>
@@ -25,8 +52,16 @@ const Login = () => {
 				</Text>
 			</View>
 
-			<TouchableOpacity style={styles.googleButton} activeOpacity={0.5}>
-				<AntDesign name="google" size={SIZES.xLarge} color={COLORS.black} />
+			<TouchableOpacity
+				style={styles.googleButton}
+				activeOpacity={0.5}
+				onPress={handleLogin}
+			>
+				<AntDesign
+					name="google"
+					size={SIZES.xLarge}
+					color={COLORS.black}
+				/>
 				<Text style={styles.googleButtonText}>Login with Google</Text>
 			</TouchableOpacity>
 		</SafeAreaView>
@@ -84,7 +119,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		gap: SIZES.medium,
 
-		...SHADOWS.medium
+		...SHADOWS.medium,
 	},
 	googleButtonText: {
 		color: COLORS.black,
