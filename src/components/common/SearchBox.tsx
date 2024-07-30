@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
 	searchBoxWrapper: {
 		marginLeft: 40,
-		height: 50,
+		height: 45,
 
 		borderColor: COLORS.black,
 		borderWidth: 1,
@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.tertiary,
 
 		position: "relative",
-		top: -35,
+		bottom: 35,
 	},
 })
