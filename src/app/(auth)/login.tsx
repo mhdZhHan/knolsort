@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: SIZES.large,
 	},
 	infoText: {
-		fontSize: SIZES.medium,
+		fontSize: 16,
 		color: "#555",
 		textAlign: "center",
 		fontStyle: "italic",

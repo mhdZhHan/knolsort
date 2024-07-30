@@ -6,7 +6,7 @@ import { UserContextProvider } from "../contexts/UserContext"
 const RootLayout = () => {
 	return (
 		<UserContextProvider>
-			<Stack>
+			<Stack initialRouteName="(screens)/home">
 				<Stack.Screen name="index" options={{ headerShown: false }} />
 				<Stack.Screen
 					name="(auth)/login"
@@ -18,7 +18,7 @@ const RootLayout = () => {
 				/>
 			</Stack>
 
-			<StatusBar barStyle="dark-content" animated />
+			<StatusBar barStyle={"dark-content"} />
 		</UserContextProvider>
 	)
 }

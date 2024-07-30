@@ -9,21 +9,17 @@ import {
 import { useRouter } from "expo-router"
 
 // components
-import { CustomButton } from "@/src/components"
+import { Header, Hero, SearchBox } from "@/src/components"
 
-// contexts
-import { useUserContext } from "@/src/contexts/UserContext"
+// constants
+import { COLORS, SIZES } from "@/src/constants"
 
 const home = () => {
-	const { updateUserData } = useUserContext()
-
-	const handleLogout = async () => {
-		await updateUserData({ type: "LOGOUT" })
-	}
-
 	return (
 		<SafeAreaView style={styles.container}>
-			<CustomButton text="Logout" onPress={handleLogout} />
+			<Header />
+			<Hero />
+			<SearchBox />
 		</SafeAreaView>
 	)
 }
@@ -32,6 +28,9 @@ export default home
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+		paddingHorizontal: SIZES.large,
+		backgroundColor: COLORS.tertiary,
 	},
 })

@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 		textShadowRadius: 1,
 	},
 	titleBoxSubtitle: {
-		fontSize: SIZES.medium,
+		fontSize: 16,
 		color: COLORS.black,
 		textAlign: "center",
 		textShadowColor: "#999",
