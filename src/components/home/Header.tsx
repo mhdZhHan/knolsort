@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet } from "react-native"
 
 import { useUserContext } from "@/src/contexts/UserContext"
-import { SIZES } from "@/src/constants"
+import { COLORS, SIZES } from "@/src/constants"
 
 const Header = () => {
 	const { user } = useUserContext()
@@ -11,18 +11,29 @@ const Header = () => {
 		<View style={styles.headerContainer}>
 			<View style={styles.headerLeft}>
 				<Text style={styles.titleText}>Hello,</Text>
-				<Text>{user?.user.name}</Text>
+				<Text>{name}</Text>
 			</View>
 
 			<View style={styles.headerRight}>
-				<Image
-					source={{ uri: String(photo) }}
-					style={{
-						width: 40,
-						height: 40,
-						borderRadius: 10,
-					}}
-				/>
+				{photo ? (
+					<Image
+						source={{ uri: String(photo) }}
+						style={{
+							width: 40,
+							height: 40,
+							borderRadius: 10,
+						}}
+					/>
+				) : (
+					<View
+						style={{
+							width: 40,
+							height: 40,
+							borderRadius: 10,
+							backgroundColor: COLORS.gray,
+						}}
+					/>
+				)}
 			</View>
 		</View>
 	)
