@@ -1,5 +1,5 @@
 import type { SliderType } from "@/src/types"
-import { View, FlatList, StyleSheet, Dimensions } from "react-native"
+import { View, FlatList, StyleSheet } from "react-native"
 
 import Slide from "./Slide"
 
@@ -13,8 +13,9 @@ const Slider = ({ slides }: SliderProps) => {
 			data={slides}
 			keyExtractor={(slide) => slide.id.toString()}
 			horizontal
+			showsHorizontalScrollIndicator={false}
 			renderItem={({ item, index }) => (
-				<View style={styles.sliderContainer}>
+				<View>
 					<Slide slide={item} index={index} />
 				</View>
 			)}
@@ -24,9 +25,4 @@ const Slider = ({ slides }: SliderProps) => {
 
 export default Slider
 
-const styles = StyleSheet.create({
-	sliderContainer: {
-		width: Dimensions.get("screen").width * 0.7, // Adjust the width if needed
-		padding: 10, // Adjust padding if needed
-	},
-})
+const styles = StyleSheet.create({})

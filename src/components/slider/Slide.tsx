@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
 	slideCard: {
 		width: Dimensions.get("screen").width * 0.7,
 		padding: 12,
-		marginRight: 30,
 		marginLeft: 10,
 		marginBottom: 30,
 		zIndex: 2,

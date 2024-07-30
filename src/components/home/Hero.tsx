@@ -17,6 +17,7 @@ export default Hero
 const styles = StyleSheet.create({
 	heroContainer: {
 		marginTop: 30,
+		paddingHorizontal: SIZES.large,
 	},
 	title: {
 		fontSize: SIZES.xLarge,

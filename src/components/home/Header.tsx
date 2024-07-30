@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "space-between",
 		marginTop: 16,
+		paddingHorizontal: SIZES.large,
 	},
 	headerLeft: {
 		flex: 1,

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { View, Text, StyleSheet, StatusBar, SafeAreaView } from "react-native"
+import { View, Text, StyleSheet, StatusBar } from "react-native"
 import { useRouter } from "expo-router"
 import { COLORS, SHADOWS, SIZES } from "../constants"
 
@@ -26,7 +26,7 @@ export default function Splash() {
 	return (
 		<>
 			<StatusBar hidden />
-			<SafeAreaView style={styles.container}>
+			<View style={styles.container}>
 				<View style={styles.titleBox}>
 					<Text style={styles.titleBoxText}>Welcome Knolsort</Text>
 					<Text style={styles.titleBoxSubtitle}>
@@ -43,7 +43,7 @@ export default function Splash() {
 					<Text style={styles.codeText}>{"  knowledge++"}</Text>
 					<Text style={styles.codeText}>{"}"}</Text>
 				</View>
-			</SafeAreaView>
+			</View>
 		</>
 	)
 }

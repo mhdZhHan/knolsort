@@ -16,7 +16,7 @@ import { Header, Hero, SearchBox, Slider } from "@/src/components"
 import { useFetch } from "@/src/hooks/useFetch"
 
 // constants
-import { COLORS, SIZES } from "@/src/constants"
+import { COLORS } from "@/src/constants"
 import { getSliders } from "@/src/lib/apiClient"
 
 // types
@@ -35,6 +35,10 @@ const home = () => {
 
 	return (
 		<>
+			<StatusBar
+				barStyle="light-content"
+				backgroundColor={COLORS.black}
+			/>
 			<SafeAreaView style={styles.container}>
 				<FlatList
 					data={[{ id: "1" }]}
@@ -57,8 +61,6 @@ const home = () => {
 					ListEmptyComponent={<Text>No course found</Text>}
 				/>
 			</SafeAreaView>
-
-			<StatusBar barStyle="dark-content" backgroundColor={COLORS.black} />
 		</>
 	)
 }
@@ -67,10 +69,8 @@ export default home
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
 		marginTop: 10,
-		paddingHorizontal: SIZES.large,
 		backgroundColor: COLORS.tertiary,
 	},
 })

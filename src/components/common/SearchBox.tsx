@@ -24,7 +24,7 @@ export default SearchBox
 const styles = StyleSheet.create({
 	searchBoxContainer: {
 		marginTop: 35,
-		marginLeft: 35,
+		marginLeft: 60,
 		height: 50,
 		zIndex: 2,
 
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 	},
 
 	searchBoxWrapper: {
-		marginLeft: 40,
+		marginLeft: 60,
 		height: 45,
 
 		borderColor: COLORS.black,
