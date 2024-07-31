@@ -15,7 +15,7 @@ const Slider = ({ slides }: SliderProps) => {
 			horizontal
 			showsHorizontalScrollIndicator={false}
 			renderItem={({ item, index }) => (
-				<View>
+				<View style={styles.sliderContainer}>
 					<Slide slide={item} index={index} />
 				</View>
 			)}
@@ -25,4 +25,8 @@ const Slider = ({ slides }: SliderProps) => {
 
 export default Slider
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+	sliderContainer: {
+		marginHorizontal: 10,
+	},
+})

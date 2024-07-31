@@ -56,10 +56,8 @@ export default Slide
 
 const styles = StyleSheet.create({
 	slideCard: {
-		width: Dimensions.get("screen").width * 0.7,
+		width: Dimensions.get("screen").width * 0.8,
 		padding: 12,
-		marginLeft: 10,
-		marginBottom: 30,
 		zIndex: 2,
 
 		borderWidth: 1.5,
