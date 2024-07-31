@@ -21,7 +21,7 @@ const HighlightCard = ({ index, item }: HighlightCardProps) => {
 		<TouchableOpacity activeOpacity={0.9}>
 			<View style={[styles.cardContainer, transformStyle]}>
 				<Image
-					source={require("../../assets/astro-firebase.jpg")}
+					source={{ uri: item.image }}
 					alt="course-image"
 					resizeMode="cover"
 					style={{
@@ -42,9 +42,7 @@ const HighlightCard = ({ index, item }: HighlightCardProps) => {
 					<Feather name="play-circle" size={20} color="black" />
 				</View>
 
-				<Text style={styles.cardTitle}>
-					Astro Firebase authentication
-				</Text>
+				<Text style={styles.cardTitle}>{item.title}</Text>
 			</View>
 
 			<View style={[transformStyle, styles.slideCardWrapper]}></View>
