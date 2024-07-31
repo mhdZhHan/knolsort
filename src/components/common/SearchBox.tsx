@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+import { View, Text, StyleSheet, TextInput } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 import { COLORS, SHADOWS, SIZES } from "@/src/constants"
 
@@ -9,9 +9,11 @@ const SearchBox = () => {
 				<View style={styles.SearchIcon}>
 					<Ionicons name="search" size={24} color="gray" />
 				</View>
-				<View style={styles.searchBox}>
-					<Text style={styles.placeholderText}>Search courses</Text>
-				</View>
+				<TextInput
+					style={styles.searchBox}
+					placeholder="Search courses"
+					placeholderTextColor={COLORS.gray}
+				/>
 			</View>
 
 			<View style={styles.searchBoxWrapper}></View>
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
 		borderBottomLeftRadius: 20,
 		backgroundColor: COLORS.tertiary,
 
-        ...SHADOWS.small,
+		...SHADOWS.small,
 	},
 	SearchIcon: {
 		height: "100%",
@@ -49,12 +51,10 @@ const styles = StyleSheet.create({
 		padding: 10,
 	},
 	searchBox: {
+		flex: 1,
 		padding: 10,
-	},
-	placeholderText: {
 		fontSize: SIZES.medium,
 		fontWeight: "bold",
-		color: COLORS.gray,
 	},
 
 	searchBoxWrapper: {
