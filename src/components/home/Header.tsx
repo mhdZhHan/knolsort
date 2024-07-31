@@ -1,4 +1,12 @@
-import { View, Text, Image, StyleSheet, StatusBar } from "react-native"
+import {
+	View,
+	Text,
+	Image,
+	StyleSheet,
+	StatusBar,
+	TouchableOpacity,
+} from "react-native"
+import { useRouter } from "expo-router"
 import {
 	heightPercentageToDP as hp,
 	widthPercentageToDP as wp,
@@ -12,6 +20,8 @@ const Header = () => {
 	const { user } = useUserContext()
 	const { name, photo } = user?.user || {}
 
+	const router = useRouter()
+
 	return (
 		<View style={styles.headerContainer}>
 			<View style={styles.headerLeft}>
@@ -21,15 +31,19 @@ const Header = () => {
 
 			<View style={styles.headerRight}>
 				{photo ? (
-					<Image
-						source={{ uri: String(photo) }}
-						style={{
-							width: wp("10%"),
-							height: wp("10%"),
-							borderRadius: 10,
-						}}
-						resizeMode="cover"
-					/>
+					<TouchableOpacity
+						onPress={() => router.push("/(auth)/profile")}
+					>
+						<Image
+							source={{ uri: String(photo) }}
+							style={{
+								width: wp("10%"),
+								height: wp("10%"),
+								borderRadius: 10,
+							}}
+							resizeMode="cover"
+						/>
+					</TouchableOpacity>
 				) : (
 					<View
 						style={{
