@@ -1,5 +1,11 @@
 import { View, Text, StyleSheet, TextInput } from "react-native"
+import {
+	widthPercentageToDP as wp,
+	heightPercentageToDP as hp,
+} from "react-native-responsive-screen"
 import { Ionicons } from "@expo/vector-icons"
+
+// constnats
 import { COLORS, SHADOWS, SIZES } from "@/src/constants"
 
 const SearchBox = () => {
@@ -7,8 +13,9 @@ const SearchBox = () => {
 		<>
 			<View style={styles.searchBoxContainer}>
 				<View style={styles.SearchIcon}>
-					<Ionicons name="search" size={24} color="gray" />
+					<Ionicons name="search" size={24} color={COLORS.gray} />
 				</View>
+
 				<TextInput
 					style={styles.searchBox}
 					placeholder="Search courses"
@@ -26,8 +33,9 @@ export default SearchBox
 const styles = StyleSheet.create({
 	searchBoxContainer: {
 		marginTop: 35,
-		marginLeft: 60,
-		height: 50,
+		marginLeft: "18%",
+		marginRight: SIZES.large,
+		height: 46,
 		zIndex: 2,
 
 		flexDirection: "row",
@@ -48,26 +56,28 @@ const styles = StyleSheet.create({
 
 		alignItems: "center",
 		justifyContent: "center",
-		padding: 10,
+		paddingHorizontal: 12,
 	},
 	searchBox: {
 		flex: 1,
-		padding: 10,
-		fontSize: SIZES.medium,
+		height: "100%",
+		padding: 4,
+		fontSize: hp("2.3%"),
 		fontWeight: "bold",
 	},
 
 	searchBoxWrapper: {
-		marginLeft: 60,
-		height: 45,
+		marginLeft: "21%",
+		marginRight: SIZES.large,
+		height: 20,
 
 		borderColor: COLORS.black,
 		borderWidth: 1,
-		borderTopLeftRadius: 20,
-		borderBottomLeftRadius: 20,
+		borderTopLeftRadius: 1,
+		borderBottomLeftRadius: 100,
 		backgroundColor: COLORS.tertiary,
 
 		position: "relative",
-		bottom: 35,
+		bottom: 8,
 	},
 })

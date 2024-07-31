@@ -1,4 +1,11 @@
-import { View, Image, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native"
+import {
+	View,
+	Image,
+	Text,
+	StyleSheet,
+	Dimensions,
+	TouchableOpacity,
+} from "react-native"
 
 // types
 import type { SliderType } from "@/src/types"
@@ -6,18 +13,21 @@ import type { SliderType } from "@/src/types"
 // constants
 import { COLORS, SHADOWS, SIZES } from "@/src/constants"
 
-type SlideProps = {
+type RectCardProps = {
 	slide: SliderType
 	index: number
 }
 
-const Slide = ({ slide, index }: SlideProps) => {
+const RectCard = ({ slide, index }: RectCardProps) => {
 	const skewYValue = index % 2 === 0 ? "-3deg" : "3deg"
 	const transformStyle = { transform: [{ skewY: skewYValue }] }
 
 	return (
-		<TouchableOpacity activeOpacity={0.9}>
-			<View style={[styles.slideCard, transformStyle]}>
+		<View style={{ marginHorizontal: 10 }}>
+			<TouchableOpacity
+				activeOpacity={0.9}
+				style={[styles.slideCard, transformStyle]}
+			>
 				<Image
 					source={{ uri: slide.image }}
 					style={{
@@ -25,6 +35,7 @@ const Slide = ({ slide, index }: SlideProps) => {
 						height: 55,
 						borderRadius: 10,
 					}}
+					resizeMode="cover"
 				/>
 
 				<View>
@@ -45,27 +56,28 @@ const Slide = ({ slide, index }: SlideProps) => {
 						20 Lessons
 					</Text>
 				</View>
-			</View>
+			</TouchableOpacity>
 
 			<View style={[transformStyle, styles.slideCardWrapper]}></View>
-		</TouchableOpacity>
+		</View>
 	)
 }
 
-export default Slide
+export default RectCard
 
 const styles = StyleSheet.create({
 	slideCard: {
 		width: Dimensions.get("screen").width * 0.8,
 		padding: 12,
 		marginBottom: 30,
-		zIndex: 2,
+		marginTop: 25,
+		zIndex: 5,
 
 		borderWidth: 1.5,
 		borderRadius: 10,
 		borderColor: COLORS.black,
 
-		backgroundColor: COLORS.tertiary,
+		backgroundColor: COLORS.white,
 		...SHADOWS.small,
 
 		flexDirection: "row",
@@ -76,10 +88,10 @@ const styles = StyleSheet.create({
 	slideCardWrapper: {
 		width: Dimensions.get("screen").width * 0.6,
 		padding: 12,
-		// marginRight: 30,
 		marginLeft: 25,
 
 		borderWidth: 1.5,
+		borderTopWidth: 0,
 		borderRadius: 10,
 		borderColor: COLORS.black,
 

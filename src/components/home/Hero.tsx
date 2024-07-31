@@ -1,10 +1,14 @@
-import { COLORS, SIZES } from "@/src/constants"
 import { View, Text, StyleSheet } from "react-native"
+
+// constants
+import { COLORS, SIZES } from "@/src/constants"
+import TitleText from "../common/TitleText"
 
 const Hero = () => {
 	return (
 		<View style={styles.heroContainer}>
-			<Text style={styles.title}>Learning Every Day</Text>
+			<TitleText title="Learning Every Day" />
+
 			<Text style={styles.description}>
 				Explore coding lessons tailored to your style
 			</Text>
@@ -16,16 +20,10 @@ export default Hero
 
 const styles = StyleSheet.create({
 	heroContainer: {
-		marginTop: 30,
+		marginTop: 35,
 		paddingHorizontal: SIZES.large,
 	},
-	title: {
-		fontSize: SIZES.xLarge,
-		fontWeight: "900",
-		marginBottom: 15,
-	},
 	description: {
-		fontSize: SIZES.medium,
 		fontWeight: "900",
 		color: COLORS.gray,
 	},

@@ -1,22 +1,24 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native"
+import { widthPercentageToDP as wp } from "react-native-responsive-screen"
 import Feather from "@expo/vector-icons/Feather"
-import {
-	widthPercentageToDP as wp,
-	heightPercentageToDP as hp,
-} from "react-native-responsive-screen"
 
+// types
+import type { TutorialType } from "@/src/types"
+
+// constants
 import { COLORS, SIZES } from "@/src/constants"
 
-type CourseCardProps = {
+type HighlightCardProps = {
 	index: number
+	item: TutorialType
 }
 
-const CourseCard = ({ index }: CourseCardProps) => {
+const HighlightCard = ({ index, item }: HighlightCardProps) => {
 	const skewYValue = index % 2 === 0 ? "1deg" : "-1deg"
 	const transformStyle = { transform: [{ skewY: skewYValue }] }
 
 	return (
-		<TouchableOpacity activeOpacity={0.90}>
+		<TouchableOpacity activeOpacity={0.9}>
 			<View style={[styles.cardContainer, transformStyle]}>
 				<Image
 					source={require("../../assets/astro-firebase.jpg")}
@@ -50,7 +52,7 @@ const CourseCard = ({ index }: CourseCardProps) => {
 	)
 }
 
-export default CourseCard
+export default HighlightCard
 
 const styles = StyleSheet.create({
 	cardContainer: {

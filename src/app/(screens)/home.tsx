@@ -1,9 +1,7 @@
 import { useState } from "react"
 import {
-	SafeAreaView,
 	Text,
 	StyleSheet,
-	Platform,
 	FlatList,
 	StatusBar,
 	RefreshControl,
@@ -11,13 +9,19 @@ import {
 } from "react-native"
 
 // components
-import { CourseCard, Header, Hero, SearchBox, Slider } from "@/src/components"
+import {
+	Header,
+	Hero,
+	SearchBox,
+	HomeSlider,
+	Tutorials,
+} from "@/src/components"
 
 // custom hooks
 import { useFetch } from "@/src/hooks/useFetch"
 
 // constants
-import { COLORS, SIZES } from "@/src/constants"
+import { COLORS } from "@/src/constants"
 import { getSliders, getTutorials } from "@/src/lib/apiClient"
 
 // types
@@ -27,6 +31,7 @@ const home = () => {
 	// for refresh control
 	const [refreshing, setRefreshing] = useState(false)
 	const { data: slides, refetch } = useFetch<SliderType>(getSliders)
+
 	const { data: tutorials, refetch: tutorialRefetch } =
 		useFetch<TutorialType>(getTutorials)
 
@@ -43,7 +48,7 @@ const home = () => {
 				barStyle="light-content"
 				backgroundColor={COLORS.black}
 			/>
-			<SafeAreaView style={styles.container}>
+			<View style={styles.container}>
 				<FlatList
 					data={[{ id: "1" }]}
 					keyExtractor={(item) => item.id.toString()}
@@ -59,47 +64,14 @@ const home = () => {
 							<Header />
 							<Hero />
 							<SearchBox />
-							<Slider slides={slides} />
-
-							<View
-								style={{
-									marginTop: 10,
-								}}
-							>
-								<Text
-									style={{
-										fontSize: SIZES.large,
-										fontWeight: "bold",
-										marginBottom: 20,
-										marginHorizontal: SIZES.large,
-									}}
-								>
-									Video Tutorials
-								</Text>
-
-								<FlatList
-									data={tutorials}
-									horizontal
-									keyExtractor={(item) => item.id.toString()}
-									showsHorizontalScrollIndicator={false}
-									renderItem={({ item, index }) => (
-										<View
-											style={{
-												marginHorizontal: 10,
-												paddingVertical: 20,
-											}}
-										>
-											<CourseCard index={index} />
-										</View>
-									)}
-								/>
-							</View>
+							<HomeSlider slides={slides} />
+							<Tutorials tutorials={tutorials} />
 						</>
 					}
 					renderItem={(item) => <Text>{""}</Text>}
 					ListEmptyComponent={<Text>No course found</Text>}
 				/>
-			</SafeAreaView>
+			</View>
 		</>
 	)
 }
@@ -108,8 +80,6 @@ export default home
 
 const styles = StyleSheet.create({
 	container: {
-		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-		marginTop: 10,
 		backgroundColor: COLORS.tertiary,
 	},
 })

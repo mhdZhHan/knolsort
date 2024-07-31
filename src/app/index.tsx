@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 import { View, Text, StyleSheet, StatusBar } from "react-native"
 import { useRouter } from "expo-router"
+import { widthPercentageToDP as wp } from "react-native-responsive-screen"
+
+// constants
 import { COLORS, SHADOWS, SIZES } from "../constants"
 
 // contexts
@@ -28,7 +31,7 @@ export default function Splash() {
 			<StatusBar hidden />
 			<View style={styles.container}>
 				<View style={styles.titleBox}>
-					<Text style={styles.titleBoxText}>Welcome Knolsort</Text>
+					<Text style={styles.titleBoxText}>Welcome to Knolsort</Text>
 					<Text style={styles.titleBoxSubtitle}>
 						The Game of logic
 					</Text>
@@ -57,13 +60,16 @@ const styles = StyleSheet.create({
 	},
 	titleBox: {
 		backgroundColor: COLORS.white,
+
 		paddingVertical: SIZES.large,
 		paddingHorizontal: 40,
-		transform: [{ skewY: "-5deg" }],
+		transform: [{ skewY: "5deg" }],
 		marginBottom: SIZES.large,
-		borderWidth: 2,
+
+		borderWidth: 6,
 		borderColor: COLORS.black,
 		borderRadius: SIZES.small,
+		zIndex: 2,
 
 		...SHADOWS.medium,
 	},
@@ -93,7 +99,7 @@ const styles = StyleSheet.create({
 		marginBottom: SIZES.xLarge,
 	},
 	codeContainer: {
-		width: "80%",
+		width: wp(80),
 		borderWidth: 2,
 		borderColor: "#333",
 		borderStyle: "dashed",

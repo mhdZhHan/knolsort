@@ -1,6 +1,11 @@
-import { View, Text, Image, StyleSheet } from "react-native"
-
+import { View, Text, Image, StyleSheet, StatusBar } from "react-native"
+import {
+	heightPercentageToDP as hp,
+	widthPercentageToDP as wp,
+} from "react-native-responsive-screen"
+// contexts
 import { useUserContext } from "@/src/contexts/UserContext"
+// constants
 import { COLORS, SIZES } from "@/src/constants"
 
 const Header = () => {
@@ -19,10 +24,11 @@ const Header = () => {
 					<Image
 						source={{ uri: String(photo) }}
 						style={{
-							width: 40,
-							height: 40,
+							width: wp("10%"),
+							height: wp("10%"),
 							borderRadius: 10,
 						}}
+						resizeMode="cover"
 					/>
 				) : (
 					<View
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
-		marginTop: 16,
+		marginTop: Number(StatusBar.currentHeight) + 18,
 		paddingHorizontal: SIZES.large,
 	},
 	headerLeft: {
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
 	},
 
 	titleText: {
-		fontSize: SIZES.large,
+		fontSize: hp("3%"),
 		fontWeight: "bold",
 	},
 })

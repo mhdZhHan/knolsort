@@ -1,7 +1,7 @@
 import type { SliderType } from "@/src/types"
-import { View, FlatList, StyleSheet } from "react-native"
+import { FlatList } from "react-native"
 
-import Slide from "./Slide"
+import RectCard from "../cards/RectCard"
 
 type SliderProps = {
 	slides: SliderType[]
@@ -15,18 +15,10 @@ const Slider = ({ slides }: SliderProps) => {
 			horizontal
 			showsHorizontalScrollIndicator={false}
 			renderItem={({ item, index }) => (
-				<View style={styles.sliderContainer}>
-					<Slide slide={item} index={index} />
-				</View>
+				<RectCard slide={item} index={index} />
 			)}
 		/>
 	)
 }
 
 export default Slider
-
-const styles = StyleSheet.create({
-	sliderContainer: {
-		marginHorizontal: 10,
-	},
-})

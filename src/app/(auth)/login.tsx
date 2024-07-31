@@ -1,6 +1,13 @@
 import { useState } from "react"
 
-import { View, Text, SafeAreaView, StyleSheet, Alert } from "react-native"
+import {
+	View,
+	Text,
+	SafeAreaView,
+	StyleSheet,
+	Alert,
+	StatusBar,
+} from "react-native"
 
 // lib/auth
 import { signIn } from "@/src/lib/auth"
@@ -34,30 +41,33 @@ const Login = () => {
 	}
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<Text style={styles.title}>Welcome to Knolsort</Text>
-			<Text style={styles.subtitle}>Your gateway to knowledge</Text>
+		<>
+			<StatusBar hidden />
+			<SafeAreaView style={styles.container}>
+				<Text style={styles.title}>Welcome to Knolsort</Text>
+				<Text style={styles.subtitle}>Your gateway to knowledge</Text>
 
-			<View style={styles.infoContainer}>
-				<Text style={styles.infoText}>
-					Learn, explore, and grow with our extensive library of
-					educational resources.
-				</Text>
-			</View>
+				<View style={styles.infoContainer}>
+					<Text style={styles.infoText}>
+						Learn, explore, and grow with our extensive library of
+						educational resources.
+					</Text>
+				</View>
 
-			<CustomButton
-				onPress={handleLogin}
-				text="Login with Google"
-				style={{ position: "absolute", bottom: 100 }}
-				iconLeft={
-					<AntDesign
-						name="google"
-						size={SIZES.xLarge}
-						color={COLORS.black}
-					/>
-				}
-			/>
-		</SafeAreaView>
+				<CustomButton
+					onPress={handleLogin}
+					text="Login with Google"
+					style={{ position: "absolute", bottom: 100 }}
+					iconLeft={
+						<AntDesign
+							name="google"
+							size={SIZES.xLarge}
+							color={COLORS.black}
+						/>
+					}
+				/>
+			</SafeAreaView>
+		</>
 	)
 }
 
@@ -83,9 +93,9 @@ const styles = StyleSheet.create({
 		textShadowRadius: 1,
 	},
 	subtitle: {
-		fontSize: 18,
+		fontSize: SIZES.medium,
 		marginBottom: SIZES.xxLarge,
-		color: "#333",
+		color: COLORS.gray,
 		textAlign: "center",
 	},
 	infoContainer: {
@@ -94,8 +104,7 @@ const styles = StyleSheet.create({
 	},
 	infoText: {
 		fontSize: 16,
-		color: "#555",
+		color: COLORS.gray,
 		textAlign: "center",
-		fontStyle: "italic",
 	},
 })
