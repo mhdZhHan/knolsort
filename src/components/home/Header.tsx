@@ -10,7 +10,7 @@ const Header = () => {
 	return (
 		<View style={styles.headerContainer}>
 			<View style={styles.headerLeft}>
-				<Text style={styles.titleText}>Hello,</Text>
+				<Text style={styles.titleText}>Welcome Back,</Text>
 				<Text>{name}</Text>
 			</View>
 
