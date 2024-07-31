@@ -1,4 +1,4 @@
-import { View, Image, Text, StyleSheet, Dimensions } from "react-native"
+import { View, Image, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native"
 
 // types
 import type { SliderType } from "@/src/types"
@@ -16,7 +16,7 @@ const Slide = ({ slide, index }: SlideProps) => {
 	const transformStyle = { transform: [{ skewY: skewYValue }] }
 
 	return (
-		<>
+		<TouchableOpacity activeOpacity={0.9}>
 			<View style={[styles.slideCard, transformStyle]}>
 				<Image
 					source={{ uri: slide.image }}
@@ -48,7 +48,7 @@ const Slide = ({ slide, index }: SlideProps) => {
 			</View>
 
 			<View style={[transformStyle, styles.slideCardWrapper]}></View>
-		</>
+		</TouchableOpacity>
 	)
 }
 
