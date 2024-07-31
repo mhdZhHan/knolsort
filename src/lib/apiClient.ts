@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import type { SliderType } from "../types"
+import type { SliderType, TutorialType } from "../types"
 
 // axios instance with base URL
 const apiClient = axios.create({
@@ -30,6 +30,29 @@ export const getSliders = async (): Promise<SliderType[]> => {
 				id: item.id,
 				name: item.attributes.name,
 				image: item.attributes.image.data.attributes.url,
+			}
+		})
+
+		return data
+	} catch (error) {
+		console.error("Error fetching slider data:", error)
+		throw error
+	}
+}
+
+// API call: Get Tutorials
+export const getTutorials = async (): Promise<TutorialType[]> => {
+	try {
+		const response = await apiClient.get("/tutorials?populate=*")
+
+		const data = response.data.data.map((item: any) => {
+			return {
+				id: item.id,
+				title: item.attributes.title,
+				description: item.attributes.description,
+				video: item.attributes.video,
+				image: item.attributes.image.data.attributes.url,
+				tutorialTopics: item.attributes.video.TutorialTopic
 			}
 		})
 

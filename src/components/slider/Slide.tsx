@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
 	slideCard: {
 		width: Dimensions.get("screen").width * 0.8,
 		padding: 12,
+		marginBottom: 30,
 		zIndex: 2,
 
 		borderWidth: 1.5,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
 	slideCardWrapper: {
 		width: Dimensions.get("screen").width * 0.6,
 		padding: 12,
-		marginRight: 30,
+		// marginRight: 30,
 		marginLeft: 25,
 
 		borderWidth: 1.5,
